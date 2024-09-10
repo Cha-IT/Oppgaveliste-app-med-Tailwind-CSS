@@ -1,66 +1,115 @@
-# Lage en webside med Tailwind CSS
+# **Oppgave: Lag en Enkel Oppgaveliste-app med Tailwind CSS**
 
-### Oppgave: Lag en Webside med Tailwind CSS
+### **Mål:**
+- Lære å bruke Tailwind CSS for styling.
+- Få praktisk erfaring med grunnleggende JavaScript for å håndtere brukerinteraksjoner.
 
-#### Mål:
-- Lære det grunnleggende om hvordan du bruker Tailwind CSS for å style nettsider.
-- Utforske Tailwind CSS for å lage en responsiv, stilren webside med minimal custom CSS.
+### **Beskrivelse:**
 
-### Del 1: Kom i gang med Tailwind CSS
+Du skal lage en enkel **oppgaveliste-app** som lar brukeren legge til oppgaver i en liste og fjerne dem når de er fullført. Bruk **Tailwind CSS** for å style appen og **grunnleggende JavaScript** for å håndtere interaksjoner.
 
-1. **Opprett en enkel HTML-fil**.
-   - Lag en HTML-fil som heter `index.html`.
-   - Legg til en `<link>`-tagg i `<head>`-seksjonen for å inkludere Tailwind CSS via CDN:
-     ```html
+### **Krav til appen:**
+
+1. **App Struktur:**
+   - **Header:** En tittel for appen, som "Oppgaveliste".
+   - **Input-felt:** Et tekstfelt der brukeren kan skrive inn oppgaver som skal legges til i listen.
+   - **Legg til knapp:** En knapp for å legge til oppgaven fra input-feltet til oppgavelisten.
+   - **Liste:** En liste som viser alle oppgavene som er lagt til, med en avkrysningsboks ved siden av hver oppgave for å markere dem som fullført.
+   - **Footer:** En enkel footer med ekstra informasjon eller en melding.
+
+2. **Styling med Tailwind CSS:**
+   - **Header:** Bruk Tailwind-klasser for å gi headeren en passende bakgrunnsfarge og justere teksten.
+   - **Input-felt og knapp:** Bruk Tailwind-klasser for å style input-feltet og knappen slik at de ser brukervennlige ut.
+   - **Liste:** Stil listen og oppgavene i listen med Tailwind for å gi en enkel og ren layout.
+   - **Responsiv design:** Sørg for at appen ser bra ut på både små og store skjermer ved å bruke Tailwinds responsive klasser.
+
+### **Trinn for trinn:**
+
+1. **Lag HTML-strukturen:**
+   - Start med en enkel HTML-fil. Lag seksjoner for header, input-felt, liste, og footer.
+
+   **Eksempel:**
+
+   ```html
+   <!DOCTYPE html>
+   <html lang="en">
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Oppgaveliste-app</title>
      <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-     ```
+   </head>
+   <body class="bg-gray-100 flex flex-col min-h-screen">
+     <header class="bg-green-600 text-white text-center p-4">
+       <h1 class="text-3xl font-bold">Oppgaveliste</h1>
+     </header>
+     <main class="flex-grow p-4">
+       <div class="max-w-lg mx-auto">
+         <div class="flex mb-4">
+           <input id="taskInput" type="text" class="flex-grow p-2 border border-gray-300 rounded-l" placeholder="Skriv inn en oppgave">
+           <button id="addButton" class="bg-green-500 text-white px-4 py-2 rounded-r">Legg til</button>
+         </div>
+         <ul id="taskList" class="list-disc pl-5"></ul>
+       </div>
+     </main>
+     <footer class="bg-gray-800 text-white text-center p-4">
+       <p>&copy; 2024 Oppgaveliste-app</p>
+     </footer>
+     <script src="app.js"></script>
+   </body>
+   </html>
+   ```
 
-2. **Opprett strukturen for siden**.
-   - Legg til følgende HTML-elementer på siden:
-     - En tittel for nettsiden i et `<h1>`-element.
-     - En kort introduksjon eller beskrivelse i et `<p>`-element.
-     - Lag en navigasjonsmeny (`<nav>`) med lenker til minst tre ulike seksjoner på siden.
-     - Opprett tre seksjoner som inneholder relevant innhold, f.eks. "Om oss", "Tjenester" og "Kontakt oss".
-     - Legg til en footer som inneholder en lenke til en annen nettside, f.eks. skolens nettside.
+2. **Legg til Tailwind CSS:**
+   - Bruk Tailwind-klasser for å style elementene. Koden ovenfor gir en god start med bruk av Tailwind CSS for layout og styling.
 
-### Del 2: Styling med Tailwind CSS
+3. **Legg til JavaScript:**
+   - Lag en fil `app.js` og skriv JavaScript-kode for å håndtere legge-til funksjonen ved å bruke enklere metoder som `innerHTML`.
 
-1. **Bruk Tailwind CSS for å style nettsiden**:
-   - Bruk Tailwind-klasser til å style de ulike elementene på siden. Du må inkludere minst:
-     - **Tekststørrelse og tekstfarger**: Bruk klasser som `text-xl`, `text-gray-700`, `text-center`, osv.
-     - **Bakgrunnsfarger**: Legg til bakgrunnsfarger på seksjonene eller andre elementer ved hjelp av `bg-blue-500`, `bg-gray-100`, osv.
-     - **Margin og padding**: Bruk `mt-4`, `px-6`, `py-8`, osv. for å justere mellomrom rundt og inni elementene.
-     - **Rammer og avrundede hjørner**: Eksperimenter med `border`, `border-gray-400`, og `rounded-lg` for å legge til visuelle rammer og avrundede hjørner.
-     - **Bilder**: Hvis du legger til bilder, bruk Tailwind-klasser som `rounded-full` for å gjøre bilder sirkulære.
+   **Eksempel:**
 
-### Del 3: Responsiv design
+   ```javascript
+   document.addEventListener('DOMContentLoaded', () => {
+     const addButton = document.getElementById('addButton');
+     const taskInput = document.getElementById('taskInput');
+     const taskList = document.getElementById('taskList');
 
-1. **Gjør nettsiden responsiv**:
-   - Legg til Tailwinds responsive klasser for å sikre at siden ser bra ut på ulike skjermstørrelser:
-     - Bruk klasser som `md:text-2xl` for å endre tekststørrelsen på større skjermer.
-     - Bruk `grid`, `grid-cols-1`, `md:grid-cols-2`, osv. for å lage responsive kolonneoppsett.
-     - Sørg for at bilder og tekst ser bra ut både på mobil og større skjermer.
+     addButton.addEventListener('click', () => {
+       const taskText = taskInput.value.trim();
+       if (taskText) {
+         // Legg til oppgaven til listen
+         const taskHTML = `
+           <li class="flex items-center mb-2 p-2 bg-white border border-gray-300 rounded">
+             <input type="checkbox" class="mr-2">
+             ${taskText}
+           </li>
+         `;
+         taskList.innerHTML += taskHTML;
+         taskInput.value = '';
+       }
+     });
+   });
+   ```
 
-### Del 4: Utforsk Tailwind CSS
+4. **Test responsivitet:**
+   - Test appen på forskjellige skjermstørrelser og sørg for at den ser bra ut på både mobil og desktop. Juster Tailwind-klasser for å håndtere responsiv design om nødvendig.
 
-1. **Utforsk og eksperimenter**:
-   - Bruk Tailwinds **hover-effekter** for å lage interaktive elementer. F.eks. kan du bruke `hover:bg-blue-700` for å endre bakgrunnsfargen på knapper når man holder musepekeren over dem.
-   - Bruk Tailwinds innebygde **flex** eller **grid system** for å lage mer avanserte layouts. Test ut `flex justify-center` eller `grid grid-cols-3`.
-   - Legg til Tailwind's **skygge- og overgangseffekter** for å forbedre brukeropplevelsen. Du kan f.eks. bruke `shadow-lg` eller `transition duration-300`.
+5. **Ferdigstilling:**
+   - Gå gjennom appen din for å sikre at alle krav er oppfylt.
+   - Sjekk at Tailwind CSS-klassene gir appen et rent og moderne utseende.
 
-### Ekstra utfordring (valgfritt):
-- Legg til en enkel knapp på siden som brukeren kan trykke på. Bruk Tailwind til å style knappen med forskjellige tilstander, som `hover`, `focus`, eller `active` effekter.
-- Opprett en egen branch i GitHub, og bruk branches til å eksperimentere med endringer i designet.
+### **Ekstra utfordringer:**
+- Legg til en funksjon for å fjerne oppgaver ved å legge til en "Fjern" knapp ved siden av hver oppgave.
+- Implementer en funksjon for å lagre oppgavene i Local Storage slik at de beholdes etter at siden er oppdatert.
 
 ---
 
-### Krav:
-- Bruk Tailwind CSS-klasser for å style alle elementer på nettsiden.
-- Gjør nettsiden responsiv slik at den fungerer godt på både mobil og desktop.
-- Siden skal være ryddig og ha en strukturert layout.
+**Materialer:**
+- [Tailwind CSS Dokumentasjon](https://tailwindcss.com/docs)
+- [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
-### Levering:
-- Last opp prosjektet ditt til GitHub og del lenken med læreren din.
-- Nettsiden skal også kunne publiseres via GitHub Pages for enkel deling og visning. 
+Bruk disse notatene og ressursene til å hjelpe deg med å bygge din oppgaveliste-app. Lykke til!
 
-Lykke til! 🎨
+---
+
+Denne oppgaven bruker `innerHTML` for å legge til oppgaver til listen, noe som er lettere for nybegynnere å forstå og implementere.
