@@ -108,7 +108,6 @@ Du skal lage en enkel **oppgaveliste-app** som lar brukeren legge til oppgaver i
 - [Tailwind CSS Dokumentasjon](https://tailwindcss.com/docs)
 - [JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide)
 
-Bruk disse notatene og ressursene til å hjelpe deg med å bygge din oppgaveliste-app. Lykke til!
 
 ---
 
